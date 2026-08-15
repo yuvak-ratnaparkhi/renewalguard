@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: renewalguard
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/renewalguard_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  security:
+    jwt:
+      secret: your-super-secret-jwt-key-at-least-32-characters-long-change-this-in-production
+      expiration: 3600000
+
+server:
+  port: 8080
