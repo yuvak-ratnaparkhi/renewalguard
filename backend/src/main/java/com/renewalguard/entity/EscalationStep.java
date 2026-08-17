@@ -1,10 +1,10 @@
 package com.renewalguard.entity;
 
+import com.renewalguard.enums.AssetStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.renewalguard.enums.AssetStatus;
 
 @Entity
 @Table(name = "escalation_steps")
@@ -22,12 +22,12 @@ public class EscalationStep {
     private EscalationPolicy policy;
 
     @Column(nullable = false)
-    private Integer daysBeforeExpiry; // e.g., 30, 7, 1
+    private Integer daysBeforeExpiry;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private AssetStatus targetStatus; // What status to transition to
+    private AssetStatus targetStatus;
 
     @Column(nullable = false)
-    private Integer stepOrder; // 1, 2, 3, etc.
+    private Integer stepOrder;
 }
