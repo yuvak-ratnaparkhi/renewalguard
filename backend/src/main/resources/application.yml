@@ -3,22 +3,27 @@ spring:
     name: renewalguard
 
   datasource:
-    url: jdbc:mysql://localhost:3306/renewalguard_db
-    username: root
-    password: Yuvak@2027
+    url: jdbc:mysql://localhost:3306/renewalguard_db?allowPublicKeyRetrieval=true&useSSL=false
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
       ddl-auto: create-drop
-    show-sql: true
+    show-sql: false
+    defer-datasource-initialization: true
     properties:
       hibernate:
         format_sql: true
 
+  sql:
+    init:
+      mode: always
+
   security:
     jwt:
-      secret: your-super-secret-jwt-key-at-least-32-characters-long-change-this-in-production
+      secret: ${JWT_SECRET:your-super-secret-jwt-key-at-least-32-characters-long-change-this-in-production}
       expiration: 3600000
 
 server:
